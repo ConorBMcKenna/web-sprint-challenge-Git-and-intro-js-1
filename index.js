@@ -245,7 +245,7 @@ Use copy to do the following:
 */
 
 function listOfNames(array) {
-  return array.filter(artist => artist.name);
+  return array.map(artist => artist.name);
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -258,10 +258,9 @@ Use removeArtist to do the following:
 🌟 EXAMPLE: if removeArtist is invoked with the artists array and the number 0, it will return the resulting array with Amedeo Modigliani removed from our dataset. */
 
 function removeArtist(array,number) {
-  array.pop();
-  return array.length;
+  return array.filter((artist, index) => index !== number);
 }
-console.log(removeArtist.length);
+
 
 
 
@@ -283,17 +282,13 @@ Use addArtist to do the following:
 4. Return the array
 🌟 EXAMPLE: Invoking addArtist(artists, 'John Doe', '1988-2022', 'Full Stack Development', 'African American', 'I have a background in customer service at Big Retail Chain. I am attending BloomTech to become a Frontend Developer.') should return the artists array with the above object added to the end of the array. */
 
-function addArtist(array) {
-  array.push({
-    id: 20,
-    name: 'Conor McKenna', 
-    years: '1993-2022',
-    genre: 'Web Design', 
-    nationality: 'Irish American',
-    bio: 'lorem ipsum',
-  });
-  return array;
-
+function addArtist(array, name , years, genre, nationality, bio) {
+  const id = 0; //array[array.length-1].id+1;
+  // array.push({
+  //   id, name , years, genre, nationality, bio
+  // });
+  // return array;
+return [...array, {id, name , years, genre, nationality, bio}];
 }
 
 
@@ -323,7 +318,7 @@ Use artistInfo to do the following:
 */
 
 function artistInfo(array , name){
-  return [array.find(artist => name === artist.name)?.bio];
+  return array.find(artist => name === artist.name)?.bio;
 }
 
 
